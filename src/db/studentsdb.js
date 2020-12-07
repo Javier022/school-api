@@ -143,6 +143,20 @@ const students = [
     seccion: "c",
     materias: ["programación", "inglés", "compu"],
   },
+  {
+    id: 7,
+    nombre: "Ricardo",
+    grado: "3ro",
+    seccion: "c",
+    materias: ["programación", "inglés", "compu"],
+  },
+  {
+    id: 8,
+    nombre: "Eber",
+    grado: "3ro",
+    seccion: "c",
+    materias: ["programación", "inglés", "compu"],
+  },
 ];
 
 module.exports = students;

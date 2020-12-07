@@ -2,20 +2,26 @@ const students = require("../db/studentsdb");
 
 class Student {
   getAllStudents() {
-    return {
-      success: true,
-      message: "Todos los Estudiantes",
-      estudiantes: students,
-    };
+    if (Array.isArray(students) && students.length !== 0) {
+      return {
+        success: true,
+        message: "Petición Exitosa",
+        estudiantes: students,
+      };
+    } else {
+      return {
+        success: false,
+        message: "Fallo la Peticíon",
+        estudiantes: [],
+      };
+    }
   }
 
   getStudentById(id) {
+    // const idToNumber = parseInt(id);
     if (typeof id === "number") {
       const data = students.find((index) => {
-        const obj = {
-          id: index.id === id,
-        };
-        return obj;
+        return index.id === id;
       });
       return {
         success: true,

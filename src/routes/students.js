@@ -3,10 +3,9 @@ const app = express();
 
 // import Students Controller
 const students = require("../controllers/studentsController");
-// console.log(students);
 
 app.get("/", (req, res) => {
-  res.send("Hola Mundo, primera API Rest!");
+  res.send("Hello world, first API rest!");
 });
 
 app.get("/students", (req, res) => {
@@ -19,9 +18,14 @@ app.get("/students", (req, res) => {
 });
 
 app.get("/students/id/:value", (req, res) => {
-  const value = req.params.value;
+  let value = parseInt(req.params.value);
+  console.log("typeof of value:", typeof value);
+  const id = value && value !== NaN ? value : "";
+  // console.log("type of id !", typeof id);
+  console.log("valor del id:", id);
+
   const getInfoStudent = new students();
-  const getStudentById = getInfoStudent.getStudentById(value);
+  const getStudentById = getInfoStudent.getStudentById(id);
   res.status(200);
   res.json({
     data: getStudentById,
