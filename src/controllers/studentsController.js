@@ -78,19 +78,21 @@ class Student {
 
   searchByName(value) {
     const text = value.toLowerCase();
+
     if (typeof text === "string" && text.length !== 0) {
-      const allNames = students.filter((nameStudent) => {
-        const names = nameStudent.nombre.toLowerCase();
-        if (names.indexOf(text) !== -1) {
-          return names;
+      const allNames = students.filter((student) => {
+        const name = student.nombre;
+
+        if (name.indexOf(text) !== -1) {
+          return name;
         }
       });
 
       if (allNames.length !== 0) {
         // console.log(allNames.length);
-        const onlyNames = allNames.map((val) => {
+        const onlyNames = allNames.map((item) => {
           const obj = {
-            nombre: val.nombre,
+            name: item.nombre,
           };
           return obj;
         });

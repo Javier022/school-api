@@ -124,7 +124,7 @@ const students = [
   },
   {
     id: 4,
-    nombre: "pablo",
+    nombre: "maria jose",
     grado: "2do",
     seccion: "a",
     materias: [
