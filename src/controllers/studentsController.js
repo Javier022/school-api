@@ -18,8 +18,7 @@ class Student {
   }
 
   getStudentById(id) {
-    // const idToNumber = parseInt(id);
-    if (typeof id === "number") {
+    if (typeof id === "number" && id <= students.length) {
       const data = students.find((index) => {
         return index.id === id;
       });
@@ -41,22 +40,40 @@ class Student {
     const getName = students.find((nombre) => {
       return nombre.nombre === name;
     });
-    return {
-      success: true,
-      message: "Resultado Busqueda",
-      data: getName,
-    };
+
+    if (getName) {
+      return {
+        success: true,
+        message: "Resultado Busqueda",
+        data: getName,
+      };
+    } else {
+      return {
+        success: false,
+        message: "No se encontraron resultados",
+        data: {},
+      };
+    }
   }
 
   getStudentsByGrade(grade) {
     const allGrades = students.filter((el) => {
       return el.grado === grade;
     });
-    return {
-      success: true,
-      message: "Resultados Busqueda",
-      data: allGrades,
-    };
+
+    if (allGrades && allGrades.length !== 0) {
+      return {
+        success: true,
+        message: "Resultados Busqueda",
+        data: allGrades,
+      };
+    } else {
+      return {
+        success: false,
+        message: "Resultados Busqueda",
+        data: {},
+      };
+    }
   }
 
   searchByName(value) {

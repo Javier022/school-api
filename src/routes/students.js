@@ -10,6 +10,7 @@ app.get("/", (req, res) => {
 
 app.get("/students", (req, res) => {
   const inst = new students();
+  console.log(inst);
   const allStudents = inst.getAllStudents();
   res.status(200);
   res.json({
@@ -18,11 +19,9 @@ app.get("/students", (req, res) => {
 });
 
 app.get("/students/id/:value", (req, res) => {
-  let value = parseInt(req.params.value);
-  console.log("typeof of value:", typeof value);
-  const id = value && value !== NaN ? value : "";
-  // console.log("type of id !", typeof id);
-  console.log("valor del id:", id);
+  const number = parseInt(req.params.value);
+  // console.log("typeof of value:", typeof number);
+  const id = number && number !== NaN ? number : "string";
 
   const getInfoStudent = new students();
   const getStudentById = getInfoStudent.getStudentById(id);
@@ -34,6 +33,8 @@ app.get("/students/id/:value", (req, res) => {
 
 app.get("/students/name/:value", (req, res) => {
   const value = req.params.value;
+  value.toLocaleLowerCase();
+
   const getInfoStudent = new students();
   const getStudentByName = getInfoStudent.getStudentByName(value);
   res.status(200);
@@ -44,6 +45,7 @@ app.get("/students/name/:value", (req, res) => {
 
 app.get("/students/grade/:value", (req, res) => {
   const value = req.params.value;
+
   const getInfoStudent = new students();
   const getStudentByGrade = getInfoStudent.getStudentsByGrade(value);
   res.status(200);
